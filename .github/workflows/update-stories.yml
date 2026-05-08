@@ -1,0 +1,163 @@
+name: Check for new PURSUE documents
+
+on:
+  schedule:
+    # Runs every day at 08:00 UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests playwright
+        
+      - name: Install Playwright browsers
+        run: python -m playwright install chromium
+
+      - name: Check for new documents on war.gov
+        id: check
+        run: |
+          python << 'EOF'
+          import json, os, re, time
+          
+          # Load current stories
+          with open('stories.json', 'r', encoding='utf-8') as f:
+            stories = json.load(f)
+          
+          current_urls = {s['url'] for s in stories}
+          
+          # Known PURSUE Release 1 URLs
+          KNOWN_URLS = [
+            "https://www.war.gov/medialink/ufo/release_1/65_hs1-834228961_62-hq-83894_section_1.pdf",
+            "https://www.war.gov/medialink/ufo/release_1/65_hs1-834228961_62-hq-83894_section_2.pdf",
+            "https://www.war.gov/medialink/ufo/release_1/western_us_event_slides_5.08.2026.pdf",
+            "https://www.war.gov/medialink/ufo/release_1/usper-statement-redacted.pdf",
+          ]
+          
+          # Check war.gov/UFO for new documents via Playwright
+          try:
+            from playwright.sync_api import sync_playwright
+            new_urls = []
+            
+            with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              page = browser.new_page()
+              
+              captured_urls = []
+              
+              def on_response(response):
+                url = response.url
+                if 'medialink/ufo' in url and (url.endswith('.pdf') or url.endswith('.png') or url.endswith('.jpg')):
+                  captured_urls.append(url)
+              
+              page.on('response', on_response)
+              
+              try:
+                page.goto('https://www.war.gov/UFO/', wait_until='networkidle', timeout=60000)
+                page.wait_for_timeout(5000)
+              except Exception as e:
+                print(f"Navigation note: {e}")
+              
+              browser.close()
+            
+            # Check what's new
+            for url in captured_urls:
+              if url not in current_urls:
+                new_urls.append(url)
+                print(f"NEW: {url}")
+            
+            if new_urls:
+              print(f"\n{len(new_urls)} new documents found!")
+              with open('new_urls.txt', 'w') as f:
+                f.write('\n'.join(new_urls))
+              os.environ['NEW_DOCS'] = 'true'
+            else:
+              print("No new documents found.")
+              os.environ['NEW_DOCS'] = 'false'
+              
+          except Exception as e:
+            print(f"Error: {e}")
+            os.environ['NEW_DOCS'] = 'false'
+          
+          # Write env output
+          with open(os.environ.get('GITHUB_OUTPUT', '/dev/null'), 'a') as f:
+            f.write(f"new_docs={'true' if os.path.exists('new_urls.txt') else 'false'}\n")
+          EOF
+
+      - name: Create PR if new documents found
+        if: steps.check.outputs.new_docs == 'true'
+        run: |
+          git config --global user.name "PURSUE Bot"
+          git config --global user.email "pursue-bot@users.noreply.github.com"
+          
+          BRANCH="update-pursue-$(date +%Y%m%d)"
+          git checkout -b $BRANCH
+          
+          # Add placeholder entries to stories.json for new URLs
+          python << 'EOF'
+          import json, os
+          
+          if not os.path.exists('new_urls.txt'):
+            exit(0)
+          
+          with open('new_urls.txt') as f:
+            new_urls = [u.strip() for u in f.readlines() if u.strip()]
+          
+          with open('stories.json', 'r', encoding='utf-8') as f:
+            stories = json.load(f)
+          
+          for url in new_urls:
+            filename = url.split('/')[-1]
+            story = {
+              "id": filename.replace('.pdf','').replace('.png','').replace('.jpg','')[:50],
+              "meta": f"NEW · PURSUE Release · {filename}",
+              "year": "2026",
+              "agency": "DOW",
+              "region": "classified",
+              "tags": ["new", "pursue", "release-1"],
+              "title_es": f"[NUEVO] {filename}",
+              "title_en": f"[NEW] {filename}",
+              "body_es": "Documento recién publicado por el programa PURSUE. Pendiente de análisis.",
+              "body_en": "Newly published document from the PURSUE program. Pending analysis.",
+              "image": "",
+              "url": url
+            }
+            stories.append(story)
+          
+          with open('stories.json', 'w', encoding='utf-8') as f:
+            json.dump(stories, f, ensure_ascii=False, indent=2)
+          
+          print(f"Added {len(new_urls)} new entries to stories.json")
+          EOF
+          
+          git add stories.json
+          git commit -m "🛸 Auto-update: $(cat new_urls.txt | wc -l) new PURSUE documents detected"
+          git push origin $BRANCH
+          
+          gh pr create \
+            --title "🛸 New PURSUE documents detected" \
+            --body "Automated detection of new documents on war.gov/UFO. Review and enhance descriptions before merging." \
+            --head $BRANCH \
+            --base main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "## PURSUE Document Check" >> $GITHUB_STEP_SUMMARY
+          echo "- Date: $(date -u)" >> $GITHUB_STEP_SUMMARY
+          echo "- New docs found: ${{ steps.check.outputs.new_docs }}" >> $GITHUB_STEP_SUMMARY
