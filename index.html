@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PURSUE — Los Archivos Abiertos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --black: #050507;
+            --dark: #0a0a0f;
+            --border: #1e1e2e;
+            --orange: #f4650a;
+            --white: #f0ede8;
+            --grey: #7a7870;
+            --grey-light: #b5b2aa;
+            --mono: 'IBM Plex Mono', monospace;
+            --serif: 'Libre Baskerville', serif;
+            --display: 'DM Serif Display', serif;
+            --headline: 'Bebas Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: var(--serif);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0.05));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 30px;
+        }
+
+        .subtitle {
+            font-family: var(--mono);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.85rem;
+            color: var(--grey);
+        }
+
+        .main-title {
+            font-family: var(--display);
+            font-size: 4.5rem;
+            color: var(--orange);
+            margin: 10px 0;
+            letter-spacing: -1px;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN Y BUSCADOR --- */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            border-top: 1px solid var(--border);
+            background: rgba(5, 5, 7, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .search-container {
+            flex: 1;
+            display: flex;
+        }
+
+        .search-bar {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px dashed var(--grey);
+            color: var(--white);
+            font-family: var(--mono);
+            font-size: 1rem;
+            padding: 10px 5px;
+            margin-right: 20px;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-bottom: 1px solid var(--orange);
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--orange);
+            color: var(--orange);
+            font-family: var(--headline);
+            font-size: 1.2rem;
+            padding: 5px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .flag-icon {
+            width: 20px;
+            height: 14px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* --- NUEVO: LÍNEA DE TIEMPO / FILTROS --- */
+        .filters-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            /* Permite scroll horizontal */
+            scrollbar-width: none;
+            /* Oculta scrollbar en Firefox */
+            white-space: nowrap;
+        }
+
+        /* Oculta scrollbar en Chrome/Safari */
+        .filters-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            background: #0f0f18;
+            border: 1px solid var(--border);
+            color: var(--grey-light);
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--grey);
+            color: var(--white);
+        }
+
+        .filter-btn.active {
+            background: var(--orange);
+            border-color: var(--orange);
+            color: var(--black);
+            font-weight: bold;
+        }
+
+        /* --- ESTILOS DE LOS ARTÍCULOS --- */
+        .container {
+            max-width: 800px;
+            margin: 30px auto 50px auto;
+            padding: 0 20px;
+        }
+
+        article {
+            margin-bottom: 80px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-meta {
+            font-family: var(--mono);
+            color: var(--orange);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .article-title {
+            font-family: var(--display);
+            font-size: 2.5rem;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+        }
+
+        .doc-image {
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+            filter: grayscale(100%) contrast(120%) brightness(0.8);
+            transition: filter 0.5s ease, transform 0.3s ease;
+        }
+
+        .doc-image:hover {
+            filter: grayscale(0%) contrast(100%) brightness(1);
+            transform: scale(1.01);
+        }
+
+        .image-caption {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--grey);
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .article-body {
+            color: var(--grey-light);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .article-body span::first-letter {
+            color: var(--orange);
+            font-family: var(--display);
+            font-size: 3.5rem;
+            float: left;
+            line-height: 1;
+            padding-right: 10px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--black);
+            background-color: var(--white);
+            text-decoration: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: var(--orange);
+            color: var(--white);
+        }
+
+        /* Animación Fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            background-color: var(--black);
+            color: var(--orange);
+            border: 1px solid var(--orange);
+            padding: 12px 18px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--grey);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scanlines"></div>
+
+    <header>
+        <div class="subtitle">PROJECT PURSUE</div>
+        <h1 class="main-title" data-es="Los Archivos Abiertos" data-en="The Open Archives">Los Archivos Abiertos</h1>
+        <div class="subtitle" data-es="Análisis Histórico y Operativo" data-en="Historical and Operational Analysis">
+            Análisis Histórico y Operativo</div>
+    </header>
+
+    <div class="nav-bar">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-bar" placeholder="Buscar..."
+                data-es-placeholder="Buscar..." data-en-placeholder="Search...">
+        </div>
+        <button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">
+            <img src="https://flagcdn.com/w20/us.png" class="flag-icon" alt="US"> ENG
+        </button>
+    </div>
+
+    <div class="filters-container" id="filterContainer">
+        <button class="filter-btn active" data-filter="all">TODOS</button>
+        <button class="filter-btn" data-filter="194">1940s</button>
+        <button class="filter-btn" data-filter="195">1950s</button>
+        <button class="filter-btn" data-filter="196">1960s</button>
+        <button class="filter-btn" data-filter="202">Años 2020+</button>
+        <button class="filter-btn" data-filter="fbi">Archivos FBI</button>
+        <button class="filter-btn" data-filter="nasa">Misiones NASA</button>
+        <button class="filter-btn" data-filter="iraq">Irak / Siria</button>
+        <button class="filter-btn" data-filter="japan">Japón</button>
+    </div>
+
+    <main class="container" id="articleList"></main>
+
+    <footer>
+        <p data-es="ESTE ARCHIVO SE MANTIENE ÚNICAMENTE CON FINES DE REFERENCIA PÚBLICA."
+            data-en="THIS ARCHIVE IS MAINTAINED SOLELY FOR PUBLIC REFERENCE PURPOSES.">ESTE ARCHIVO SE MANTIENE
+            ÚNICAMENTE CON FINES DE REFERENCIA PÚBLICA.</p>
+        <p>© 2026 PURSUE PROJECT</p>
+    </footer>
+
+    <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
+
+    <script>
+        let currentLang = 'es';
+        let allStories = [];
+        let currentFilter = 'all'; // Guarda el filtro seleccionado
+
+        async function loadStories() {
+            try {
+                const response = await fetch('stories.json');
+                allStories = await response.json();
+                applyFilters(); // Aplica filtros al cargar
+            } catch (error) {
+                console.error("Error cargando el JSON:", error);
+            }
+        }
+
+        function renderStories(data) {
+            const container = document.getElementById('articleList');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:var(--grey); font-family:var(--mono);">No se encontraron archivos en esta categoría.</p>`;
+                return;
+            }
+
+            data.forEach(story => {
+                const article = document.createElement('article');
+                article.className = 'doc-item fade-in';
+
+                const title = currentLang === 'es' ? story.title_es : story.title_en;
+                const body = currentLang === 'es' ? story.body_es : story.body_en;
+
+                const imgHtml = story.image ? `<img src="${story.image}" class="doc-image"><div class="image-caption">Visual Intelligence Ref: ${story.id}</div>` : '';
+
+                article.innerHTML = `
+                    <span class="article-meta">${story.meta}</span>
+                    <h2 class="article-title">${title}</h2>
+                    ${imgHtml}
+                    <div class="article-body">
+                        <span>${body}</span>
+                    </div>
+                    <a href="${story.url}" class="btn-download" target="_blank">
+                        ${currentLang === 'es' ? 'ACCEDER AL ARCHIVO' : 'ACCESS FILE'}
+                    </a>
+                `;
+                container.appendChild(article);
+                if (window.observer) window.observer.observe(article);
+            });
+        }
+
+        // --- LÓGICA CONJUNTA DE BUSCADOR Y FILTROS ---
+        // --- LÓGICA CONJUNTA DE BUSCADOR Y FILTROS ---
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            const filtered = allStories.filter(story => {
+                // 1. Comprueba el texto escrito en la barra (en ambos idiomas)
+                const matchesSearch =
+                    story.title_es.toLowerCase().includes(searchTerm) ||
+                    story.title_en.toLowerCase().includes(searchTerm) ||
+                    story.meta.toLowerCase().includes(searchTerm);
+
+                // 2. Comprueba el botón de filtro seleccionado
+                let matchesCategory = true;
+                if (currentFilter !== 'all') {
+                    const metaLower = story.meta.toLowerCase();
+                    // Quitamos las tildes al texto en español para evitar errores (Japón -> japon)
+                    const bodyEsLower = story.body_es.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    const bodyEnLower = story.body_en.toLowerCase();
+
+                    // Busca el filtro en la meta, en el texto en español sin tildes, O en el texto en inglés
+                    matchesCategory =
+                        metaLower.includes(currentFilter) ||
+                        bodyEsLower.includes(currentFilter) ||
+                        bodyEnLower.includes(currentFilter);
+                }
+
+                return matchesSearch && matchesCategory;
+            });
+
+            renderStories(filtered);
+        }
+
+        // --- EVENTOS DE LOS BOTONES DE FILTRO ---
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Quita la clase activa de todos
+                filterButtons.forEach(b => b.classList.remove('active'));
+                // Se la pone al que has clickado
+                this.classList.add('active');
+
+                // Actualiza la variable y aplica filtros
+                currentFilter = this.getAttribute('data-filter');
+                applyFilters();
+            });
+        });
+
+        // Evento del buscador
+        document.getElementById('searchInput').addEventListener('keyup', applyFilters);
+
+        // --- CAMBIO DE IDIOMA ---
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            const btn = document.getElementById('langBtn');
+            btn.innerHTML = currentLang === 'es' ? '<img src="https://flagcdn.com/w20/us.png" class="flag-icon"> ENG' : '<img src="https://flagcdn.com/w20/es.png" class="flag-icon"> ESP';
+
+            document.querySelectorAll('[data-es]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+            });
+
+            const searchInput = document.getElementById('searchInput');
+            searchInput.placeholder = searchInput.getAttribute(`data-${currentLang}-placeholder`);
+
+            // Traducir los botones de filtro
+            const filterContainer = document.getElementById('filterContainer');
+            if (currentLang === 'en') {
+                filterContainer.children[0].innerText = "ALL";
+                filterContainer.children[4].innerText = "2020s+";
+                filterContainer.children[5].innerText = "FBI Files";
+                filterContainer.children[6].innerText = "NASA Missions";
+                filterContainer.children[7].innerText = "Iraq / Syria";
+                filterContainer.children[8].innerText = "Japan";
+            } else {
+                filterContainer.children[0].innerText = "TODOS";
+                filterContainer.children[4].innerText = "Años 2020+";
+                filterContainer.children[5].innerText = "Archivos FBI";
+                filterContainer.children[6].innerText = "Misiones NASA";
+                filterContainer.children[7].innerText = "Irak / Siria";
+                filterContainer.children[8].innerText = "Japón";
+            }
+
+            applyFilters();
+        }
+
+        // Animación de Scroll
+        window.onscroll = function () {
+            const btn = document.getElementById("scrollTopBtn");
+            btn.style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
+        };
+
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        window.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        loadStories();
+    </script>
+</body>
+
+</html>
