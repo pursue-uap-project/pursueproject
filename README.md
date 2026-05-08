@@ -49,18 +49,6 @@ PURSUE is an information organization tool. Its purpose is to:
 
 ---
 
-## 📂 Project Structure
-
-pursueproject/
-│
-├── index.html          # Main interface
-├── styles.css          # Archive styles
-├── app.js              # Logic for loading, filters, timeline, and rendering
-├── stories.json        # Database of declassified cases
-└── img/                # Images associated with the cases
-
----
-
 ## 🌐 Live Demo
 
 You can explore the archive here:  
@@ -71,3 +59,17 @@ You can explore the archive here:
 ## 🤝 Contributions
 
 This archive is in constant expansion. If you have access to new declassified documents or improvements for the search engine, Pull Requests are welcome.
+
+---
+
+## 📂 Project Structure
+
+```text
+pursueproject/
+│
+├── index.html          # Main interface
+├── styles.css          # Archive styles
+├── app.js              # Logic for loading, filters, timeline, and rendering
+├── stories.json        # Database of declassified cases
+└── img/                # Images associated with the cases
+
