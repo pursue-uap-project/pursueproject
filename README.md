@@ -51,7 +51,6 @@ PURSUE is an information organization tool. Its purpose is to:
 
 ## 📂 Project Structure
 
-```text
 pursueproject/
 │
 ├── index.html          # Main interface
