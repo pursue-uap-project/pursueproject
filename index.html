@@ -1,172 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PURSUE — 80 años de avistamientos UAP desclasificados por el Departamento de Guerra de EE.UU. / 80 years of UAP sightings declassified by the U.S. Department of War.">
-<meta property="og:title" content="PURSUE — The Open Files">
-<meta property="og:description" content="80 years of declassified UAP documents from WWII to 2026.">
-<meta property="og:image" content="https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm6-apollo-17-1972.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<title>PURSUE — Los Archivos Abiertos / The Open Files</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="PURSUE — 80 años de avistamientos UAP desclasificados por el Departamento de Guerra de EE.UU. / 80 years of UAP sightings declassified by the U.S. Department of War.">
+  <meta property="og:title" content="PURSUE — The Open Files">
+  <meta property="og:description" content="80 years of declassified UAP documents from WWII to 2026.">
+  <meta property="og:image" content="https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm6-apollo-17-1972.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>PURSUE — Los Archivos Abiertos / The Open Files</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://zaswear.github.io/pursueproject/">
 </head>
+
 <body>
 
-<div class="scanlines"></div>
+  <div class="scanlines"></div>
 
-<!-- ══════════════════════ HEADER ══════════════════════ -->
-<header>
-  <div class="subtitle" data-i18n="subtitle2" 
-       data-es="PROYECTO PURSUE · DESCLASIFICADO 8 MAYO 2026"
-       data-en="PROJECT PURSUE · DECLASSIFIED MAY 8, 2026">
-    PROYECTO PURSUE · DESCLASIFICADO 8 MAYO 2026
+  <!-- ══════════════════════ HEADER ══════════════════════ -->
+  <header>
+    <div class="subtitle" data-i18n="subtitle2" data-es="PROYECTO PURSUE · DESCLASIFICADO 8 MAYO 2026"
+      data-en="PROJECT PURSUE · DECLASSIFIED MAY 8, 2026">
+      PROYECTO PURSUE · DESCLASIFICADO 8 MAYO 2026
+    </div>
+
+    <h1 class="main-title" data-es="Los Archivos Abiertos" data-en="The Open Files">
+      Los Archivos Abiertos
+    </h1>
+
+    <div class="subtitle" data-es="Análisis Histórico y Operativo — 80 años de avistamientos UAP"
+      data-en="Historical and Operational Analysis — 80 years of UAP sightings">
+      Análisis Histórico y Operativo — 80 años de avistamientos UAP
+    </div>
+
+    <div class="header-meta">
+      <span class="header-badge active">RELEASE 1</span>
+      <span class="header-badge">119+ DOCS</span>
+      <a href="https://www.war.gov/UFO/" target="_blank" rel="noopener" class="header-link">
+        war.gov/UFO ↗
+      </a>
+      <a href="https://github.com/zaswear/pursueproject" target="_blank" rel="noopener" class="header-link">
+        GitHub ↗
+      </a>
+    </div>
+  </header>
+
+  <!-- ══════════════════════ STICKY NAV ══════════════════════ -->
+  <div class="nav-bar">
+    <div class="search-container">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="searchInput" class="search-bar" placeholder="Buscar documentos, agencias, regiones..."
+        autocomplete="off" title="Ctrl+K para enfocar / Ctrl+K to focus">
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">
+      <img src="https://flagcdn.com/w20/us.png" class="flag-icon" alt="flag"> ENG
+    </button>
   </div>
 
-  <h1 class="main-title" 
-      data-es="Los Archivos Abiertos"
-      data-en="The Open Files">
-    Los Archivos Abiertos
-  </h1>
-
-  <div class="subtitle"
-       data-es="Análisis Histórico y Operativo — 80 años de avistamientos UAP"
-       data-en="Historical and Operational Analysis — 80 years of UAP sightings">
-    Análisis Histórico y Operativo — 80 años de avistamientos UAP
+  <!-- ══════════════════════ STATS BAR ══════════════════════ -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" id="stat-docs">—</span>
+      <span class="stat-label es">DOCUMENTOS</span>
+      <span class="stat-label en" style="display:none">DOCUMENTS</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" id="stat-years">80+</span>
+      <span class="stat-label es">AÑOS DE HISTORIA</span>
+      <span class="stat-label en" style="display:none">YEARS OF HISTORY</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" id="stat-agencies">—</span>
+      <span class="stat-label es">AGENCIAS</span>
+      <span class="stat-label en" style="display:none">AGENCIES</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" id="stat-countries">—</span>
+      <span class="stat-label es">PAÍSES / REGIONES</span>
+      <span class="stat-label en" style="display:none">COUNTRIES / REGIONS</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">2026</span>
+      <span class="stat-label">PURSUE LAUNCH</span>
+    </div>
   </div>
 
-  <div class="header-meta">
-    <span class="header-badge active">RELEASE 1</span>
-    <span class="header-badge">119+ DOCS</span>
-    <a href="https://www.war.gov/UFO/" target="_blank" rel="noopener" class="header-link">
-      war.gov/UFO ↗
-    </a>
-    <a href="https://github.com/zaswear/pursueproject" target="_blank" rel="noopener" class="header-link">
-      GitHub ↗
-    </a>
-  </div>
-</header>
-
-<!-- ══════════════════════ STICKY NAV ══════════════════════ -->
-<div class="nav-bar">
-  <div class="search-container">
-    <span class="search-icon">⌕</span>
-    <input type="text" id="searchInput" class="search-bar"
-           placeholder="Buscar documentos, agencias, regiones..."
-           autocomplete="off"
-           title="Ctrl+K para enfocar / Ctrl+K to focus">
-    <div class="search-dropdown" id="searchDropdown"></div>
-  </div>
-
-  <button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">
-    <img src="https://flagcdn.com/w20/us.png" class="flag-icon" alt="flag"> ENG
-  </button>
-</div>
-
-<!-- ══════════════════════ STATS BAR ══════════════════════ -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <span class="stat-num" id="stat-docs">—</span>
-    <span class="stat-label es">DOCUMENTOS</span>
-    <span class="stat-label en" style="display:none">DOCUMENTS</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num" id="stat-years">80+</span>
-    <span class="stat-label es">AÑOS DE HISTORIA</span>
-    <span class="stat-label en" style="display:none">YEARS OF HISTORY</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num" id="stat-agencies">—</span>
-    <span class="stat-label es">AGENCIAS</span>
-    <span class="stat-label en" style="display:none">AGENCIES</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num" id="stat-countries">—</span>
-    <span class="stat-label es">PAÍSES / REGIONES</span>
-    <span class="stat-label en" style="display:none">COUNTRIES / REGIONS</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">2026</span>
-    <span class="stat-label">PURSUE LAUNCH</span>
-  </div>
-</div>
-
-<!-- ══════════════════════ TIMELINE ══════════════════════ -->
-<div class="timeline-bar" id="timelineBar">
-  <!-- Populated by app.js -->
-</div>
-
-<!-- ══════════════════════ FILTERS ══════════════════════ -->
-<div class="filters-section">
-  <span class="filters-label es">— Filtrar por agencia / época</span>
-  <span class="filters-label en" style="display:none">— Filter by agency / era</span>
-  <div class="filters-container">
-    <button class="filter-btn active" data-filter="all">TODOS</button>
-    <button class="filter-btn" data-filter="fbi">ARCHIVOS FBI</button>
-    <button class="filter-btn" data-filter="nasa">NASA</button>
-    <button class="filter-btn" data-filter="dow">MISIONES DOW</button>
-    <button class="filter-btn" data-filter="aaro">AARO</button>
-    <button class="filter-btn" data-filter="dos">ESTADO</button>
-    <button class="filter-btn" data-filter="1940s">AÑOS 40</button>
-    <button class="filter-btn" data-filter="1950s">AÑOS 50</button>
-    <button class="filter-btn" data-filter="1960s">AÑOS 60</button>
-    <button class="filter-btn" data-filter="1970s">AÑOS 70</button>
-    <button class="filter-btn" data-filter="202">AÑOS 2020+</button>
-    <button class="filter-btn" data-filter="classified">CLASIFICADO</button>
-  </div>
-</div>
-
-<!-- ══════════════════════ MAP / REGIONS ══════════════════════ -->
-<div class="map-section">
-  <span class="map-label es">— Filtrar por región</span>
-  <span class="map-label en" style="display:none">— Filter by region</span>
-  <div class="map-pins" id="regionPins">
+  <!-- ══════════════════════ TIMELINE ══════════════════════ -->
+  <div class="timeline-bar" id="timelineBar">
     <!-- Populated by app.js -->
   </div>
-</div>
 
-<!-- ══════════════════════ ARTICLE LIST ══════════════════════ -->
-<main class="container">
-  <div class="results-info" id="resultsInfo"></div>
-  <div id="articleList"></div>
-</main>
-
-<!-- ══════════════════════ FOOTER ══════════════════════ -->
-<footer>
-  <p class="es">ESTE ARCHIVO SE MANTIENE ÚNICAMENTE CON FINES DE REFERENCIA PÚBLICA.</p>
-  <p class="en" style="display:none">THIS ARCHIVE IS MAINTAINED SOLELY FOR PUBLIC REFERENCE PURPOSES.</p>
-  <p style="margin-top:0.5rem;">
-    © 2026 PURSUE PROJECT ·
-    <a href="https://www.war.gov/UFO/" target="_blank">war.gov/UFO</a> ·
-    <a href="https://github.com/zaswear/pursueproject" target="_blank">GitHub</a>
-  </p>
-</footer>
-
-<!-- ══════════════════════ SCROLL TOP ══════════════════════ -->
-<button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
-
-<!-- ══════════════════════ LIGHTBOX ══════════════════════ -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightboxImg" src="" alt="">
-  <div style="position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);
-              font-family:var(--mono);font-size:.65rem;color:var(--grey-light);
-              text-align:center;letter-spacing:.1em;" 
-       id="lightboxCaption"></div>
-</div>
-
-<!-- ══════════════════════ DETAIL MODAL ══════════════════════ -->
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕ CERRAR / CLOSE</button>
-    <div class="modal-meta" id="modalMeta"></div>
-    <h2 class="modal-title" id="modalTitle"></h2>
-    <div class="modal-body" id="modalBody"></div>
-    <a id="modalLink" href="#" class="btn-download" target="_blank" rel="noopener">ACCESS FILE</a>
+  <!-- ══════════════════════ FILTERS ══════════════════════ -->
+  <div class="filters-section">
+    <span class="filters-label es">— Filtrar por agencia / época</span>
+    <span class="filters-label en" style="display:none">— Filter by agency / era</span>
+    <div class="filters-container">
+      <button class="filter-btn active" data-filter="all">TODOS</button>
+      <button class="filter-btn" data-filter="fbi">ARCHIVOS FBI</button>
+      <button class="filter-btn" data-filter="nasa">NASA</button>
+      <button class="filter-btn" data-filter="dow">MISIONES DOW</button>
+      <button class="filter-btn" data-filter="aaro">AARO</button>
+      <button class="filter-btn" data-filter="dos">ESTADO</button>
+      <button class="filter-btn" data-filter="1940s">AÑOS 40</button>
+      <button class="filter-btn" data-filter="1950s">AÑOS 50</button>
+      <button class="filter-btn" data-filter="1960s">AÑOS 60</button>
+      <button class="filter-btn" data-filter="1970s">AÑOS 70</button>
+      <button class="filter-btn" data-filter="202">AÑOS 2020+</button>
+      <button class="filter-btn" data-filter="classified">CLASIFICADO</button>
+    </div>
   </div>
-</div>
 
-<script src="app.js"></script>
+  <!-- ══════════════════════ MAP / REGIONS ══════════════════════ -->
+  <div class="map-section">
+    <span class="map-label es">— Filtrar por región</span>
+    <span class="map-label en" style="display:none">— Filter by region</span>
+    <div class="map-pins" id="regionPins">
+      <!-- Populated by app.js -->
+    </div>
+  </div>
+
+  <!-- ══════════════════════ ARTICLE LIST ══════════════════════ -->
+  <main class="container">
+    <div class="results-info" id="resultsInfo"></div>
+    <div id="articleList"></div>
+  </main>
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer>
+    <p class="es">ESTE ARCHIVO SE MANTIENE ÚNICAMENTE CON FINES DE REFERENCIA PÚBLICA.</p>
+    <p class="en" style="display:none">THIS ARCHIVE IS MAINTAINED SOLELY FOR PUBLIC REFERENCE PURPOSES.</p>
+    <p style="margin-top:0.5rem;">
+      © 2026 PURSUE PROJECT ·
+      <a href="https://www.war.gov/UFO/" target="_blank">war.gov/UFO</a> ·
+      <a href="https://github.com/zaswear/pursueproject" target="_blank">GitHub</a>
+    </p>
+  </footer>
+
+  <!-- ══════════════════════ SCROLL TOP ══════════════════════ -->
+  <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
+
+  <!-- ══════════════════════ LIGHTBOX ══════════════════════ -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <div style="position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);
+              font-family:var(--mono);font-size:.65rem;color:var(--grey-light);
+              text-align:center;letter-spacing:.1em;" id="lightboxCaption"></div>
+  </div>
+
+  <!-- ══════════════════════ DETAIL MODAL ══════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕ CERRAR / CLOSE</button>
+      <div class="modal-meta" id="modalMeta"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-body" id="modalBody"></div>
+      <a id="modalLink" href="#" class="btn-download" target="_blank" rel="noopener">ACCESS FILE</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
+
 </html>
