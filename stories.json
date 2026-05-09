@@ -15,7 +15,7 @@
     "title_en": "Foo Fighters: The WWII Night Fighter Encounters",
     "body_es": "Documentos SECRET de la 415ª Escuadrilla de Cazas Nocturnos de la XII Fuerza Aérea Táctica documentan sistemáticamente, noche tras noche en diciembre de 1944 y enero de 1945, objetos luminosos que seguían aviones aliados sobre Europa. Los objetos tomaban evasivas, se acercaban a menos de 100 pies y luego desaparecían. El Ministerio del Aire británico concluyó: 'sigue siendo un misterio'. El comando solicitó investigación adicional pero no tenía personal técnico capaz de explicarlos.",
     "body_en": "SECRET documents from the 415th Night Fighter Squadron, XII Tactical Air Command, systematically document night after night in December 1944 and January 1945, luminous objects following Allied aircraft over Europe. The objects took evasive maneuvers, approached within 100 feet, then disappeared. The British Air Ministry concluded: 'still something of a mystery'. Command requested further investigation but had no technical personnel capable of explaining them.",
-    "image": "https://www.war.gov/medialink/ufo/release_1/fbi-photo-a1.png",
+    "image": "img/fbi-photo-a1.png",
     "url": "https://www.war.gov/medialink/ufo/release_1/331_120752_numeric_files_1944–1945_37153_german_armament_equipment_documents.pdf"
   },
   {
@@ -225,7 +225,7 @@
     "title_en": "Gemini 7: Frank Borman Reports a 'Bogey'",
     "body_es": "La transcripción original de voz tierra-aire de la misión Gemini 7 confirma que el astronauta Frank Borman reportó un objeto no identificado distinto al booster de cohete. Houston preguntó: '¿Es el booster o es un avistamiento real?' Borman respondió: 'Esto es un avistamiento real.' También describió 'cientos de pequeñas partículas' moviéndose en órbita polar. Houston lo reconoció formalmente.",
     "body_en": "The original Gemini 7 air-to-ground voice transcript confirms that astronaut Frank Borman reported an unidentified object distinct from the rocket booster. Houston asked: 'Is that the booster or is that an actual sighting?' Borman replied: 'This is an actual sighting.' He also described 'hundreds of small particles' moving in polar orbit. Houston formally acknowledged it.",
-    "image": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm3-apollo-12-1969.jpg",
+    "image": "img/nasa-uap-vm3-apollo-12-1969.jpg",
     "url": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-d3-gemini-7-transcript-1965.pdf"
   },
   {
@@ -244,7 +244,7 @@
     "title_en": "Apollo 12: Unexplained Objects on the Way to the Moon",
     "body_es": "La tripulación de Apollo 12 — Pete Conrad, Alan Bean y Richard Gordon — documentó en las transcripciones de voz la presencia de objetos no identificados durante el viaje a la Luna. Las imágenes asociadas (nasa-uap-vm1 a vm5) muestran anomalías visuales capturadas en 1969. La consistencia entre los distintos relatos de la tripulación refuerza la credibilidad de los avistamientos.",
     "body_en": "The Apollo 12 crew — Pete Conrad, Alan Bean, and Richard Gordon — documented in voice transcripts the presence of unidentified objects during the journey to the Moon. Associated images (nasa-uap-vm1 to vm5) show visual anomalies captured in 1969. The consistency between different crew accounts reinforces the credibility of the sightings.",
-    "image": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm1-apollo-12-1969.jpg",
+    "image": "img/nasa-uap-vm1-apollo-12-1969.jpg",
     "url": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-d1-apollo-12-transcript-1969.pdf"
   },
   {
@@ -265,7 +265,7 @@
     "title_en": "Apollo 11: The Technical Debriefing That Was Not Public",
     "body_es": "El debrief técnico oficial de la tripulación de Apollo 11 — Armstrong, Aldrin y Collins — contiene referencias a fenómenos observados durante la primera misión lunar tripulada. A diferencia de las declaraciones públicas, los debriefs técnicos capturan observaciones sin filtrar destinadas a análisis interno.",
     "body_en": "The official technical debriefing of the Apollo 11 crew — Armstrong, Aldrin, and Collins — contains references to phenomena observed during the first crewed lunar mission. Unlike public statements, technical debriefings capture unfiltered observations intended for internal analysis.",
-    "image": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm2-apollo-12-1969.jpg",
+    "image": "img/nasa-uap-vm2-apollo-12-1969.jpg",
     "url": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-d4-apollo-11-technical-crew-debriefing-1969.pdf"
   },
   {
@@ -285,7 +285,7 @@
     "title_en": "Apollo 17: 'It's Something Physical in the Distance'",
     "body_es": "A 10-12 diámetros terrestres de distancia, el comandante Gene Cernan insistió en que el objeto que veía no eran partículas ni estrellas. 'Es algo físico en la distancia', afirmó. Houston respondió: 'No lo dudamos, Gene' — e intentó triangularlo con el sistema de óptica. La imagen nasa-uap-vm6, tomada durante esta misión, muestra luces anómalas sobre el terreno lunar.",
     "body_en": "At 10-12 Earth diameters distance, Commander Gene Cernan insisted the object he saw was neither particles nor stars. 'It's something physical in the distance,' he stated. Houston responded: 'We don't doubt that, Gene' — and attempted to triangulate it with the optics system. Image nasa-uap-vm6, taken during this mission, shows anomalous lights over the lunar surface.",
-    "image": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm6-apollo-17-1972.jpg",
+    "image": "img/nasa-uap-vm6-apollo-17-1972.jpg",
     "url": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-d2-apollo-17-transcript-1972.pdf"
   },
   {
@@ -304,7 +304,7 @@
     "title_en": "Apollo 17: The Scientific Crew Debriefing",
     "body_es": "El debrief científico de la tripulación de Apollo 17 complementa las transcripciones de voz con análisis detallados de las observaciones anómalas. Mientras que el transcript captura las observaciones en tiempo real, el debrief refleja el análisis posterior de los astronautas, más sistemático y técnico.",
     "body_en": "The Apollo 17 scientific crew debriefing complements the voice transcripts with detailed analyses of anomalous observations. While the transcript captures real-time observations, the debriefing reflects the astronauts' subsequent analysis, more systematic and technical.",
-    "image": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm4-apollo-12-1969.jpg",
+    "image": "img/nasa-uap-vm4-apollo-12-1969.jpg",
     "url": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-d5-apollo-17-crew-debriefing-for-science-1973.pdf"
   },
   {
@@ -323,7 +323,7 @@
     "title_en": "Apollo 17: Complete Technical Debriefing",
     "body_es": "El debrief técnico completo de Apollo 17 incluye todas las anomalías de sistemas, observaciones visuales no explicadas y protocolos de respuesta ante fenómenos inesperados. Es el documento más detallado de los tres archivos Apollo 17 de PURSUE.",
     "body_en": "The complete Apollo 17 technical debriefing includes all system anomalies, unexplained visual observations, and response protocols for unexpected phenomena. It is the most detailed document of the three Apollo 17 PURSUE files.",
-    "image": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm5-apollo-12-1969.jpg",
+    "image": "img/nasa-uap-vm5-apollo-12-1969.jpg",
     "url": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-d6-apollo-17-technical-crew-debriefing-1973.pdf"
   },
   {
@@ -1040,7 +1040,7 @@
     "title_en": "FBI Photo Series A: The 8 Declassified PNG Images",
     "body_es": "El Release 1 de PURSUE incluye 8 imágenes PNG de la Serie A del FBI (fbi-photo-a1 a fbi-photo-a8). Son fotografías reales incluidas en expedientes de investigación del FBI. Todas clasificadas bajo la exención B6 del FOIA (información personal identificable). Las fechas reales de las fotografías permanecen clasificadas.",
     "body_en": "PURSUE Release 1 includes 8 PNG images from the FBI's Series A (fbi-photo-a1 to fbi-photo-a8). These are real photographs included in FBI investigation files. All classified under FOIA exemption B6 (personally identifiable information). The actual dates of the photographs remain classified.",
-    "image": "https://www.war.gov/medialink/ufo/release_1/fbi-photo-a1.png",
+    "image": "img/fbi-photo-a1.png",
     "url": "https://www.war.gov/medialink/ufo/release_1/fbi-photo-a1.png"
   },
   {
@@ -1061,7 +1061,7 @@
     "title_en": "FBI Photo B6: Measurement Scale, Date Redacted",
     "body_es": "La foto B6 del FBI incluye una escala de medición visible con marcas a 5, 10 y 15 cm — fue tomada con intención forense para medir algo con precisión. La fecha real fue redactada y sustituida por '12/31/99 18:10:00', placeholder estándar cuando la fecha ha sido clasificada. La pregunta evidente: ¿qué están midiendo exactamente? ¿Es la primera imagen física oficial de material UAP?",
     "body_en": "FBI photo B6 includes a visible measurement scale with markings at 5, 10, and 15 cm — it was taken with forensic intent to precisely measure something. The actual date was redacted and replaced with '12/31/99 18:10:00', the standard placeholder when a date has been classified. The obvious question: what exactly are they measuring? Is this the first official physical image of UAP material?",
-    "image": "",
+    "image": "img/fbi-photo-b6.png",
     "url": "https://www.war.gov/medialink/ufo/release_1/fbi-photo-b6.pdf"
   },
   {
@@ -1159,7 +1159,7 @@
     "title_en": "Milwaukee 1974: Metallic Object with Internal Heat Source Recovered by Police",
     "body_es": "El 21 de agosto de 1974 a las 5:55 pm, la policía de Milwaukee recuperó un objeto no identificado que había caído del cielo. El objeto fue descrito como de aproximadamente 13 x 8 x 5 pulgadas, de naturaleza y color metálicos, dentado por un lado, y con una 'fuente interna de calor'. La policía local notificó a las autoridades militares. A las 12:07 am del 22 de agosto, el Centro de Mando Militar Nacional (NMCC) contactó al FBI para solicitar cualquier información. El objeto estaba todavía en posesión de la policía en el momento de la comunicación. El Capitán Wills del Departamento de Policía de Milwaukee había llamado a la Oficina del FBI en Milwaukee para reportar la recuperación. El memorando fue firmado por T.J. Smith y dirigido al Sr. W.R. Wannall.",
     "body_en": "On August 21, 1974 at 5:55 pm, Milwaukee police recovered an unidentified object that had fallen from the sky. The object was described as approximately 13 x 8 x 5 inches, metallic in substance and color, jagged on one side, and possessing an 'internal heat source'. Local police notified military authorities. At 12:07 am on August 22, the National Military Command Center (NMCC) contacted the FBI to request any available information. The object was still in police possession at the time of the communication. Captain Wills of the Milwaukee Police Department had called the Milwaukee FBI Office to report the recovery. The memo was signed by T.J. Smith and addressed to Mr. W.R. Wannall.",
-    "image": "",
+    "image": "img/milwaukee1974-a1.png",
     "url": "https://www.war.gov/medialink/ufo/release_1/65_hs1-834228961_62-hq-83894_section_4.pdf"
   },
   {
@@ -1181,7 +1181,7 @@
     "title_en": "Dallas 1967: Anonymous Witness Claims Contact with Beings — They Shot a Russian Cosmonaut",
     "body_es": "El 9 de octubre de 1967, una mujer joven que se negó a identificarse se presentó en la Oficina del FBI de Dallas. Afirmó haber recibido información de seres del espacio exterior y haber conocido en julio de 1967 a un ser de otro planeta que había asumido forma humana. Le dio información y luego fue recogido y partió de la Tierra el 21 de agosto de 1967. Los seres le comunicaron lo siguiente: (1) Un misil antimisiles fue disparado contra un OVNI sobre África el 22 de mayo de 1962, pero el OVNI estaba protegido por su 'campo de fuerza'; (2) Un OVNI fue detectado a 22.000 millas de la Tierra por radar alrededor del 6 de agosto de 1967; (3) Un OVNI fue detectado sobre la Antártida el 20 de agosto de 1967; (4) Un OVNI fue derribado sobre la 'Dewline' y los seres del espacio exterior están intentando recuperarlo. La testigo dijo que teme por su vida porque 'personas que vieron OVNIs han muerto misteriosamente'. Solo accedería a reunirse con funcionarios en la Oficina del FBI de Dallas.",
     "body_en": "On October 9, 1967, a young white female who refused to give her name appeared at the Dallas FBI Office. She claimed to have received information from beings from outer space and to have met in July 1967 a being from another planet who had assumed earthly form. He gave her information, then was picked up and departed from Earth on August 21, 1967. The beings told her: (1) An antimissile missile was fired at a UFO over Africa on May 22, 1962, but the UFO was protected by its 'force field'; (2) A UFO was detected 22,000 miles from Earth by radar around August 6, 1967; (3) A UFO was detected over Antarctica on August 20, 1967; (4) A UFO was shot down over the 'Dewline' and beings from outer space are trying to recover it. The witness said she fears for her life because 'persons who saw UFOs have died mysteriously'. She would only meet with officials at the Dallas FBI Office.",
-    "image": "",
+    "image": "img/enclosure62.png",
     "url": "https://www.war.gov/medialink/ufo/release_1/65_hs1-834228961_62-hq-83894_section_5.pdf"
   },
   {
