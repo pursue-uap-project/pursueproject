@@ -100,7 +100,7 @@ pursueproject/
 
 ## 🔄 Auto-Update System
 
-A GitHub Action runs daily and checks `war.gov/UFO` for new documents. When new PDFs are detected, it updates `stories.json` automatically via a pull request.
+A GitHub Action runs every Tuesday at 08:00 UTC and checks `war.gov/UFO` for new documents. When new PDFs are detected, it updates `stories.json` automatically via a pull request.
 
 To trigger manually:
 ```

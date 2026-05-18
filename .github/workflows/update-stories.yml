@@ -2,8 +2,8 @@ name: Check for new PURSUE documents
 
 on:
   schedule:
-    # Runs every day at 08:00 UTC
-    - cron: '0 8 * * *'
+    # Runs every Tuesday at 08:00 UTC
+    - cron: '0 8 * * 2'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
