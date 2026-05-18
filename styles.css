@@ -462,6 +462,32 @@ article:hover::before { background: var(--orange); }
   letter-spacing: 0.15em;
 }
 
+.doc-gallery {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 18px 0 6px;
+}
+
+.doc-thumb {
+  width: calc(20% - 5px);
+  min-width: 70px;
+  height: 90px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  filter: grayscale(80%) contrast(110%) brightness(0.8);
+  transition: filter 0.3s, transform 0.25s, border-color 0.3s;
+  cursor: zoom-in;
+  flex: 1 1 70px;
+}
+
+.doc-thumb:hover {
+  filter: grayscale(10%) contrast(105%) brightness(1);
+  transform: scale(1.04);
+  border-color: var(--orange);
+  z-index: 1;
+}
+
 .article-body {
   color: var(--grey-light);
   font-size: 1rem;

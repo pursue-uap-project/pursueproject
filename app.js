@@ -122,8 +122,8 @@ function initApp() {
   buildRegionPins();
   updateStats();
   updateStaticText();
-  applyFilters();
   setupObserver();
+  applyFilters();
 }
 
 // ─── STATS ────────────────────────────────────────────────────────────────────
@@ -268,12 +268,21 @@ function renderStories(data, highlight = '') {
     const hlTitle  = highlight ? highlightText(title, highlight) : title;
     const hlBody   = highlight ? highlightText(body,  highlight) : body;
 
-    const imgHtml = story.image
-      ? `<img src="${story.image}" class="doc-image" 
-              alt="${title}" loading="lazy"
+    let imgHtml = '';
+    if (story.images && story.images.length > 1) {
+      const thumbs = story.images.map((src, i) =>
+        `<img src="${escHtml(src)}" class="doc-thumb" loading="lazy"
+              alt="${escHtml(title)} ${i + 1}/${story.images.length}"
+              onclick="openLightbox('${escHtml(src)}', '${escHtml(title)} — ${i + 1}/${story.images.length}')">`
+      ).join('');
+      imgHtml = `<div class="doc-gallery">${thumbs}</div>
+                 <div class="image-caption">VISUAL REF · ${story.meta.split('·')[0].trim()} · ${story.images.length} IMÁGENES</div>`;
+    } else if (story.image) {
+      imgHtml = `<img src="${story.image}" class="doc-image"
+              alt="${escHtml(title)}" loading="lazy"
               onclick="openLightbox(this.src, '${escHtml(title)}')">
-         <div class="image-caption">VISUAL REF · ${story.meta.split('·')[0].trim()}</div>`
-      : '';
+         <div class="image-caption">VISUAL REF · ${story.meta.split('·')[0].trim()}</div>`;
+    }
 
     const tagsHtml = (story.tags || []).slice(0, 4)
       .map(tag => `<span class="tag">${tag.toUpperCase()}</span>`).join('');

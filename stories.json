@@ -245,6 +245,13 @@
     "body_es": "La tripulación de Apollo 12 — Pete Conrad, Alan Bean y Richard Gordon — documentó en las transcripciones de voz la presencia de objetos no identificados durante el viaje a la Luna. Las imágenes asociadas (nasa-uap-vm1 a vm5) muestran anomalías visuales capturadas en 1969. La consistencia entre los distintos relatos de la tripulación refuerza la credibilidad de los avistamientos.",
     "body_en": "The Apollo 12 crew — Pete Conrad, Alan Bean, and Richard Gordon — documented in voice transcripts the presence of unidentified objects during the journey to the Moon. Associated images (nasa-uap-vm1 to vm5) show visual anomalies captured in 1969. The consistency between different crew accounts reinforces the credibility of the sightings.",
     "image": "img/nasa-uap-vm1-apollo-12-1969.jpg",
+    "images": [
+      "img/nasa-uap-vm1-apollo-12-1969.jpg",
+      "img/nasa-uap-vm2-apollo-12-1969.jpg",
+      "img/nasa-uap-vm3-apollo-12-1969.jpg",
+      "img/nasa-uap-vm4-apollo-12-1969.jpg",
+      "img/nasa-uap-vm5-apollo-12-1969.jpg"
+    ],
     "url": "https://www.war.gov/medialink/ufo/release_1/nasa-uap-d1-apollo-12-transcript-1969.pdf"
   },
   {

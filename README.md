@@ -1,11 +1,11 @@
 # 🟠 PROJECT PURSUE — Open Archive of Anomalous Phenomena
 
 > **80 years of UAP sightings declassified by the U.S. Department of War**  
-> Live: [zaswear.github.io/pursueproject](https://zaswear.github.io/pursueproject) · Source: [war.gov/UFO](https://www.war.gov/UFO/)
+> Live: [https://github.com/pursue-uap-project/pursueproject](https://github.com/pursue-uap-project/pursueproject) · Source: [war.gov/UFO](https://www.war.gov/UFO/)
 
 ---
 
-![PURSUE Banner](https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm6-apollo-17-1972.jpg)
+![PURSUE Banner](img/nasa-uap-vm6-apollo-17-1972.jpg)
 
 *Official NASA photograph from Apollo 17 (1972) — declassified via PURSUE Release 1*
 
