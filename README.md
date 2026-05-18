@@ -48,7 +48,7 @@ This project is a **fully functional, searchable, bilingual archive** of all pub
 
 ### 📸 Image Lightbox
 - Click any document image to view full-size
-- 8 official FBI PNG photos + 6 NASA mission photos
+- 8 FBI Series A PNG photos + 24 FBI Series B JPG photos + 6 NASA mission photos + historical documents (Milwaukee 1974, Siberia map, case enclosures)
 
 ---
 
@@ -78,11 +78,12 @@ pursueproject/
 ├── index.html          # Main interface (clean HTML, no inline JS/CSS)
 ├── styles.css          # All styles
 ├── app.js              # All logic: loading, search, filters, timeline, i18n
-├── stories.json        # Database of declassified cases (50+ entries)
+├── stories.json        # Database of declassified cases (63+ entries)
 ├── .github/
 │   └── workflows/
 │       └── update-stories.yml  # Auto-update GitHub Action
-├── img/                # Local images
+├── img/                # Local images (42 files: FBI Series A+B, NASA, historical)
+├── CLAUDE.md           # Project context for Claude Code
 └── README.md
 ```
 
