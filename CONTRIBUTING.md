@@ -21,6 +21,7 @@ All documents live in `stories.json`. Each entry follows this schema:
   "body_es": "Descripción completa en español (2-4 frases mínimo).",
   "body_en": "Full description in English (minimum 2-4 sentences).",
   "image": "https://url-to-image-or-empty-string",
+  "images": ["img/photo-1.jpg", "img/photo-2.jpg"],
   "url": "https://www.war.gov/medialink/ufo/release_1/filename.pdf"
 }
 ```
@@ -39,7 +40,8 @@ All documents live in `stories.json`. Each entry follows this schema:
 | `title_en` | ✅ | English title shown on the card. |
 | `body_es` | ✅ | Spanish description. Minimum 2 sentences. Be factual. |
 | `body_en` | ✅ | English description. Same content as `body_es`. |
-| `image` | ✅ | URL to an image, or `""` if none. Use official war.gov URLs when available. |
+| `image` | ✅ | URL or local path (`img/file.jpg`) to the main image, or `""` if none. |
+| `images` | ➖ | Optional array of image paths for multi-image galleries. When present, replaces `image` in the card and renders clickable thumbnails. Keep `image` set to the first item as fallback. |
 | `url` | ✅ | Direct URL to the official PDF/file on war.gov. |
 
 ---

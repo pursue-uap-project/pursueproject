@@ -6,7 +6,7 @@
 
 // ─── STATE ──────────────────────────────────────────────────────────────────
 const state = {
-  lang: localStorage.getItem('pursue_lang') || 'es',
+  lang: localStorage.getItem('pursue_lang') || 'en',
   stories: [],
   filter: 'all',
   region: 'all',
